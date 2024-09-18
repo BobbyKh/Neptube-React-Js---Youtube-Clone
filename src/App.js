@@ -19,6 +19,7 @@ import Music from "./pages/categories/Music";
 import Podcast from "./pages/categories/Podcast";
 import Vlogs from "./pages/categories/Vlogs";
 import Live from "./pages/categories/Live";
+import Spotify from "./pages/categories/Spotify";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -81,6 +82,7 @@ const App = () => {
             <Route path="/podcast" element={<Podcast />} />
             <Route path="/vlogs" element={<Vlogs />} />
             <Route path="/live" element={<Live />} />
+            <Route path="/spotify" element={<Spotify/>} />
             
           </Routes>
           </Home>

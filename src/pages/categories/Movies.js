@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Preloader from '../../components/Preloader'
+import Shorts from '../../components/Shorts'
 
 
 const Movies = () => {
   const [videos, setVideos] = useState([])
-  const [showLoadMore, setShowLoadMore] = React.useState(false)
-  const [page, setPage] = React.useState(1)
+  const [page, setPage] = useState(1)
+  const [clips, setClips] = useState([])
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -14,7 +14,7 @@ const Movies = () => {
       const data = await res.json()
       setVideos(videos.concat(data))
       if (data.length < 10) {
-        setShowLoadMore(false)
+        setPage(page)
       } else {
         setPage(page + 1)
       }
@@ -22,13 +22,18 @@ const Movies = () => {
     fetchVideos()
   }, [page])
 
-  const loadMore = () => {
-    setShowLoadMore(true)
-  }
+  useEffect(() => {
+    const fetchClips = async () => {
+      const res = await fetch(`https://picsum.photos/v2/list?page=1&limit=10`)
+      const data = await res.json()
+      setClips(data)
+    }
+    fetchClips()
+  }, [])
 
   return (
     <div className="video-card-container flex flex-wrap justify-center gap-4 scroll-m-10">
-      {videos.map(i => (
+      {videos.slice(0, 10).map( i => (
         <Link to={`/player/${i.id}`} key={i.id} data-aos="fade-up" data-aos-duration="1000">
           <div className="video-card mt-1 bg-white rounded-2xl flex flex-col md:w-64">
             <div className="thumbnail-container">
@@ -42,13 +47,8 @@ const Movies = () => {
           </div>
         </Link>
       ))}
-      {showLoadMore && (
-        <div className="flex justify-center mt-4">
-          <button className="bg-white border border-gray-300 hover:bg-red-100 text-gray-700 font-bold py-2 px-4 rounded" onClick={loadMore}>
-            Load more
-          </button>
-        </div>
-      )}
+      <Shorts clips={clips} />
+   
     </div>
   )
 }

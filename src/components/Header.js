@@ -12,7 +12,7 @@ const Header = ({
     <>
       <div className="header bg-white flex justify-between items-center px-2 shadow-md mt-2 relative">
         <div className="logo-container flex items-center ">
-          <i className="fa-solid fa-bars " onClick={openSidebar}></i>
+          <i className="fa-solid fa-bars text-3xl hover:cursor-pointer" onClick={openSidebar}></i>
 
           <Link to="/">
             <img className="logo mr-2 w-10 h-10 " src="logo.jpg" alt="" />{" "}
