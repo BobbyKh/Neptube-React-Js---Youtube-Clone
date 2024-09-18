@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Sidebar = ({ isSidebarOpen , closeSidebar }) => {
   return (
@@ -11,34 +14,38 @@ const Sidebar = ({ isSidebarOpen , closeSidebar }) => {
         </div>
       </div>
       <div className="links mt-4 text-center font-sans">
-        <a href="#" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300">
+        <Link to="/" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
           <i className="fa-solid fa-house"></i>
           Home
-        </a>
-        <a href="#" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300">
+        </Link>
+        <Link to="/shorts" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="200">
           <i className="fa-solid fa-video"></i>
           Shorts
-        </a>
-        <a href="#" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300">
+        </Link>
+        <Link to="/subscriptions" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
           <i className="fa-solid fa-bell"></i>
           Subscription
-        </a>
-        <a href="#" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300">
+        </Link>
+        <Link to="/history" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="400">
           <i className="fa-solid fa-clock"></i>
           History
-        </a>
-        <a href="#" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300">
+        </Link>
+        <Link to="/watchlater" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">
           <i className="fa-solid fa-clock-rotate-left"></i>
           Watch Later
-        </a>
-        <a href="#" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300">
+        </Link>
+        <Link to="/likedvideos" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="600">
           <i className="fa-solid fa-thumbs-up"></i>
           Liked Videos
-        </a>
-        <a href="#" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300">
+        </Link>
+        <Link to="/mychannel" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="700">
+          <i className="fa-solid fa-link"></i>
+          My Channel
+        </Link>
+        <Link to="/settings" className="flex items-center gap-2  px-4 py-2 text-lg hover:bg-gray-300" data-aos="fade-right" data-aos-duration="500" data-aos-delay="800">
           <i className="fa-solid fa-gear"></i>
           Settings
-        </a>
+        </Link>
       </div>
     </div>
   );

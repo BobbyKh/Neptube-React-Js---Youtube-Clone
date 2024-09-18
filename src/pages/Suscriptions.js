@@ -1,28 +1,29 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Shorts from "./Shorts";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-const Card = () => {
-  const [videos, setVideos] = useState([...Array(10).keys()]);
-  const [showLoadMore, setShowLoadMore] = useState(true);
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Shorts from '../components/Shorts'
+const Suscriptions = () => {
+  const [videos, setVideos] = useState([...Array(10).keys()])
+  const [showLoadMore, setShowLoadMore] = useState(true)
 
   const loadMore = () => {
-    setVideos([...videos, ...Array(10).keys(videos.length)]);
+    setVideos([...videos, ...Array(10).keys(videos.length)])
     if (videos.length >= 50) {
-      setShowLoadMore(false);
+      setShowLoadMore(false)
     }
-  };
-
-  AOS.init();
+  }
 
   return (
     <>
+      <header className="shorts-icons inline-flex ml-4 mt-4 px-2">
+      <i className="fa-solid fa-video text-3xl text-red-500"></i>
+      <h1 className="text-3xl font-bold ml-2">Suscribed</h1>
+
+    </header>
     <div className="video-card-container flex flex-wrap justify-center gap-4 scroll-m-10">
+  
       {videos.map(i => (
-      <Link to="/player">
-        <div className="video-card mt-1 bg-white rounded-2xl flex flex-col md:w-64 " key={i} data-aos="fade-up" data-aos-duration="1000">
+      <Link to="/player" key={i}>
+        <div className="video-card mt-1 bg-white rounded-2xl flex flex-col md:w-64 ">
           <div className="thumbnail-container ">
             <img className="thumbnail rounded-2xl w-[350px] h-[200px] object-cover" src={`https://picsum.photos/id/${i + 1}/350/200`} alt="" />
           </div>
@@ -44,9 +45,7 @@ const Card = () => {
     )}
     <Shorts/>
     </>
-  );
-};
+  )
+}
 
-export default Card;
-
-
+export default Suscriptions
